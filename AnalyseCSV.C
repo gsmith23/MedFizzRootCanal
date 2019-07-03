@@ -1,6 +1,6 @@
 /*
 
- Example using root:
+ Examples using root:
  reading from CSV file, 
  writing to root file,
  reading from a TTree,
