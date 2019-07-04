@@ -1,2 +1,2 @@
 # MedFizzRootCanal
-Root analysis of Geant4 output in C/C++
+Geant4 medical physics simulation output C/C++ ROOT analysis
