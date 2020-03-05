@@ -40,9 +40,11 @@ void Graph_NECR(){
     
     for (int j = 0 ; j < nPoints ; j++){
       
-      RCR[i][j] = (j+1)*(1.0-SCR[i])/nPoints;
+      //RCR[i][j] = (j+1)*(1.0-SCR[i])/nPoints;
       
-      TCR[i][j] = 1.0 - SCR[i] - RCR[i][j];
+      RCR[i][j] = (j+1)*0.7/nPoints;
+      
+      TCR[i][j] = TMath::Max(1.0 - SCR[i] - RCR[i][j],0.);
       
       NECR[i][j] = calculateNECR(TCR[i][j],RCR[i][j],SCR[i]);
     }
@@ -69,13 +71,13 @@ void Graph_NECR(){
 
   char text_scat[nSets][64];
   
-  latex->DrawLatex(0.6,0.85,"Scatter Rate");
+  latex->DrawLatex(0.6,0.80,"Scattered Rate (%)");
   
   for (int i = 0 ; i < nSets ; i++){
-    sprintf(text_scat[i],"\t %.2f",SCR[i]);
+    sprintf(text_scat[i],"\t %.0f ",SCR[i]*100.);
     latex->SetTextColor(kBlue+3*i);
   
-    latex->DrawLatex(0.6,0.8-0.05*i,text_scat[i]);
+    latex->DrawLatex(0.6,0.75-0.05*i,text_scat[i]);
   }
 
 }
